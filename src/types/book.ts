@@ -5,17 +5,17 @@ import { Author } from "./author";
 @InputType("BookInput")
 export class Book {
   @Field(type => ID)
-  id: string;
+  id?: string;
 
   @Field()
-  name: string;
+  name?: string;
 
   @Field()
-  rentPeriod: number;
+  rentPeriod?: number;
 
   @Field()
-  link: string;
+  link?: string;
 
-  @Field(type => Author)
-  author: Author
+  @Field(type => Author, { nullable: true })
+  author?: Author
 }

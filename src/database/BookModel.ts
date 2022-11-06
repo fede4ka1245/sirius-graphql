@@ -4,11 +4,9 @@ const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
   name: String,
-  photoLink: Number,
-  birthday: String,
-  deathDate: String,
-  books: [{ type: Schema.Types.ObjectId, ref: 'Book' }],
-  availableLibraryBooks: Number,
+  rentPeriod: Number,
+  link: String,
+  author: { type: Schema.Types.ObjectId, ref: 'Author' }
 });
 
-export const AuthorModel = mongoose.model("Author", BookSchema);
+export const BookModel = mongoose.model("Book", BookSchema);

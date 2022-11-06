@@ -8,20 +8,20 @@ export class Author {
   id: string;
 
   @Field(type => String)
-  name: string;
+  name?: string;
 
   @Field(type => Number)
-  photoLink: number;
+  photoLink?: number;
 
   @Field(type => String)
-  birthday: string;
+  birthday?: string;
 
   @Field(type => String, { nullable: true })
   deathDate?: string;
 
   @Field(type => [Book])
-  books: Book[];
+  books?: Book[];
 
   @Field(type => Number)
-  availableLibraryBooks: number;
+  availableLibraryBooks?: number;
 }

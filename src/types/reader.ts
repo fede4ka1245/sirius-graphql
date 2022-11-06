@@ -1,8 +1,9 @@
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, InputType, ObjectType} from "type-graphql";
 import { Rent } from "./rent";
 import { Author } from "./author";
 
 @ObjectType()
+@InputType("ReaderInput")
 export class Reader {
   @Field(type => ID)
   id: string;
@@ -14,10 +15,7 @@ export class Reader {
   email: string;
 
   @Field(type => [Rent])
-  rents: Rent[];
-
-  @Field(type => Author)
-  author: Author;
+  rents?: Rent[];
 
   @Field()
   penaltySummary: number;

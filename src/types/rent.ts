@@ -1,22 +1,25 @@
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, InputType, ObjectType} from "type-graphql";
 import { Book } from './book';
 import { Reader } from "./reader";
-import { Author } from "./author";
 
 @ObjectType()
+@InputType("RentInput")
 export class Rent {
   @Field(type => ID)
-  id: string;
+  id?: string;
 
-  @Field()
-  book: Book;
+  @Field({ nullable: true })
+  book?: Book;
 
-  @Field(type => Reader)
-  reader: Reader;
+  @Field(type => Reader, { nullable: true })
+  reader?: Reader;
 
-  @Field()
-  rentTime: number;
+  @Field({ nullable: true })
+  rentTime?: number;
 
-  @Field(type => Author)
-  dailyPenalty: Author
+  @Field({ nullable: true })
+  dailyPenalty?: number;
+
+  @Field({ nullable: true })
+  rentPeriod?: number;
 }
