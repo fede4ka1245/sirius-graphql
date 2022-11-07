@@ -7,9 +7,14 @@ import { AuthorResolver } from "./src/resolvers/AuthorResolver";
 import {ReaderResolver} from "./src/resolvers/ReaderResolver";
 import {RentResolver} from "./src/resolvers/RentResolver";
 import {BookResolver} from "./src/resolvers/BookResolver";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+const port = 5000 || Number(process.env.PORT);
 
 const main = async () => {
-  await mongoose.connect("mongodb://localhost:27017/admin", { useUnifiedTopology: true, useNewUrlParser: true } as ConnectOptions);
+  await mongoose.connect(process.env.DATABASE_URI, { useUnifiedTopology: true, useNewUrlParser: true } as ConnectOptions);
   const app = express();
 
   const schema = await buildSchema({
@@ -24,8 +29,8 @@ const main = async () => {
 
   server.applyMiddleware({ app });
 
-  app.listen({ port: 5000 }, () =>
-    console.log(`🚀 Server ready at http://localhost:5000${server.graphqlPath}`)
+  app.listen({ port }, () =>
+    console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`)
   );
 }
 
